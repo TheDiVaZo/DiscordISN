@@ -1,0 +1,61 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'java'
+}
+
+group = 'thedivazo'
+version = '1.0-SNAPSHOT'
+
+compileJava.options.encoding = 'UTF-8'
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven { url = "https://repo.aikar.co/content/groups/aikar/" }
+    maven { url = "https://hub.spigotmc.org/nexus/content/groups/public/" }
+    maven { url 'https://jitpack.io' }
+    maven {
+        url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+    }
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+    maven {
+        name = 'placeholderapi'
+        url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+    }
+}
+
+dependencies {
+    implementation 'org.commonmark:commonmark:0.19.0'
+    implementation 'org.slf4j:slf4j-log4j12:1.7.29'
+    implementation 'com.vk.api:sdk:1.0.14'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    compileOnly 'org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT'
+    implementation 'org.telegram:telegrambots:6.1.0'
+    implementation 'org.telegram:telegrambotsextensions:6.1.0'
+    compileOnly 'me.clip:placeholderapi:2.11.2'
+    implementation 'com.github.DV8FromTheWorld:JDA:v5.0.0-alpha.13'
+    implementation "co.aikar:acf-paper:0.5.1-SNAPSHOT" // Replace PLATFORM with bukkit, paper, sponge, etc
+    // Example line:
+    // implementation "co.aikar:acf-paper:0.5.1-SNAPSHOT"
+}
+
+compileJava {
+    options.compilerArgs += ["-parameters"]
+    options.fork = true
+    options.forkOptions.executable = 'javac'
+}
+
+shadowJar {
+    relocate 'co.aikar.commands', 'thedivazo.discordisn.command.acf'
+    relocate 'co.aikar.locales', 'thedivazo.discordisn.command.locales'
+    minimize()
+}
+
+
+build.dependsOn shadowJar

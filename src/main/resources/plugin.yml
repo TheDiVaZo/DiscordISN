@@ -1,0 +1,8 @@
+name: DiscordISN
+version: '1.0-SNAPSHOT'
+main: thedivazo.discordisn.Main
+api-version: 1.18
+prefix: DiscordISN
+softdepend:
+  - PlaceholderAPI
+authors: [ TheDiVaZo ]

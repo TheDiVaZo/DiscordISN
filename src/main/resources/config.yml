@@ -1,0 +1,11 @@
+discord_api_bot_token: ""
+discord_api_news_channel_id: ""
+
+vk_api_enabled: false
+vk_api_group_token: ""
+vk_api_group_id: ""
+vk_api_news_channel_id: ""
+
+telegram_api_enabled: false
+telegram_api_bot_token: ""
+telegram_api_news_channel_id: ""
