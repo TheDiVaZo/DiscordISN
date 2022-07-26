@@ -1,11 +1,10 @@
-package thedivazo.discordisn.event;
+package thedivazo.discordisn.listener;
 
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.bukkit.Bukkit;
-import thedivazo.discordisn.util.Config;
-import thedivazo.discordisn.util.bots.BotManager;
+import thedivazo.discordisn.Config;
+import thedivazo.discordisn.BotManager;
 
 public class DiscordEventListener extends ListenerAdapter {
 

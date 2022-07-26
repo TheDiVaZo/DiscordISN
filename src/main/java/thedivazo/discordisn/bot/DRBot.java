@@ -1,11 +1,13 @@
-package thedivazo.discordisn.util.bots;
+package thedivazo.discordisn.bot;
 
+import javax.security.auth.login.LoginException;
 import java.util.Objects;
 
 public abstract class DRBot {
     private String token;
-    public DRBot(String token) {
-        this.token = token;
+    public DRBot(String token, String botName) throws LoginException {
+        if(Objects.nonNull(token)) this.token = token;
+        else throw new LoginException(botName+"No token specified. Please specify the token in the config and restart the plugin");
     }
 
     public abstract void sendMessage(String channel, String message);

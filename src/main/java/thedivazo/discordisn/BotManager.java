@@ -1,7 +1,10 @@
-package thedivazo.discordisn.util.bots;
+package thedivazo.discordisn;
 
 import net.dv8tion.jda.api.utils.MarkdownSanitizer;
-import thedivazo.discordisn.util.Config;
+import thedivazo.discordisn.bot.DRBot;
+import thedivazo.discordisn.bot.DRDiscordBot;
+import thedivazo.discordisn.bot.DRTelegramBot;
+import thedivazo.discordisn.bot.DRVkBot;
 import thedivazo.discordisn.util.MessageManager;
 
 import javax.security.auth.login.LoginException;
@@ -10,7 +13,7 @@ import java.io.IOException;
 public class BotManager {
     public static DRBot discordBot = null;
     public static DRBot telegramBot = null;
-    public static DRBot vkontakteBot = null;
+    public static DRBot vkBot = null;
 
     public static void initBots() {
         try {
@@ -20,12 +23,12 @@ public class BotManager {
             Config.DISCORD_ENABLED = false;
             return;
         }
-        if(Config.VKONTAKTE_ENABLED) {
+        if(Config.VK_ENABLED) {
             try {
-                vkontakteBot = new DRVkontakteBot(Config.VKONTAKTE_GROUP_TOKEN, Config.VKONTAKTE_GROUP_ID);
+                vkBot = new DRVkBot(Config.VKONTAKTE_GROUP_TOKEN, Config.VKONTAKTE_GROUP_ID);
             } catch (LoginException | NullPointerException e) {
                 e.printStackTrace();
-                Config.VKONTAKTE_ENABLED = false;
+                Config.VK_ENABLED = false;
             }
         }
         if(Config.TELEGRAM_ENABLED) {
@@ -39,9 +42,8 @@ public class BotManager {
     }
 
     public static void sendMessage(String message) {
-        Thread sendThread = new Thread(() -> {
-            if(Config.VKONTAKTE_ENABLED) {
-                vkontakteBot.sendMessage(Config.VKONTAKTE_NEWS_CHANNEL_ID, MarkdownSanitizer.sanitize(message));
+            if(Config.VK_ENABLED) {
+                vkBot.sendMessage(Config.VKONTAKTE_NEWS_CHANNEL_ID, MarkdownSanitizer.sanitize(message));
             }
             if(Config.TELEGRAM_ENABLED) {
                 try {
@@ -50,8 +52,6 @@ public class BotManager {
                     e.printStackTrace();
                 }
             }
-        });
-        sendThread.start();
     }
 
 }

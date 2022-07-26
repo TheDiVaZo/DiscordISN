@@ -1,23 +1,21 @@
-package thedivazo.discordisn.util.bots;
+package thedivazo.discordisn.bot;
 
 import com.vk.api.sdk.client.TransportClient;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
-import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
 
 import javax.security.auth.login.LoginException;
-import java.util.Objects;
 
-public class DRVkontakteBot extends DRBot{
+public class DRVkBot extends DRBot{
     private GroupActor groupActor;
     private static TransportClient transportClient = new HttpTransportClient();
     private static VkApiClient vk = new VkApiClient(transportClient);
 
-    public DRVkontakteBot(String groupToken, String groupId) throws LoginException {
-        super(Objects.requireNonNull(groupToken));
+    public DRVkBot(String groupToken, String groupId) throws LoginException {
+        super(groupToken, "[Vk API]");
         groupActor = new GroupActor(Integer.parseInt(groupId), groupToken);
         try {
             vk.groups().getMembers(groupActor).count(1).groupId(groupId).execute();

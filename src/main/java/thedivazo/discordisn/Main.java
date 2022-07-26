@@ -3,9 +3,7 @@ package thedivazo.discordisn;
 import co.aikar.commands.PaperCommandManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import thedivazo.discordisn.event.command.ReloadCommand;
-import thedivazo.discordisn.util.Config;
-import thedivazo.discordisn.util.bots.BotManager;
+import thedivazo.discordisn.command.ReloadCommand;
 
 public final class Main extends JavaPlugin {
 
@@ -22,7 +20,7 @@ public final class Main extends JavaPlugin {
         }
 
         if(Config.TELEGRAM_ENABLED) getLogger().info("Integration with Telegram api has been enabled");
-        if(Config.VKONTAKTE_ENABLED) getLogger().info("Integration with Vkontakte api has been enabled");
+        if(Config.VK_ENABLED) getLogger().info("Integration with Vkontakte api has been enabled");
         getLogger().info("Integration with Discord api has been enabled");
         registerCommands();
     }

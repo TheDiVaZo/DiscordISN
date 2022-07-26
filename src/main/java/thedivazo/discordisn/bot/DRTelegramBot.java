@@ -1,4 +1,4 @@
-package thedivazo.discordisn.util.bots;
+package thedivazo.discordisn.bot;
 
 import org.telegram.telegrambots.bots.DefaultAbsSender;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
@@ -7,7 +7,6 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import javax.security.auth.login.LoginException;
-import java.util.Objects;
 
 
 public class DRTelegramBot extends DRBot {
@@ -27,7 +26,7 @@ public class DRTelegramBot extends DRBot {
     private DefaultAbsSender absSender = new AbsSender(new DefaultBotOptions());
 
     public DRTelegramBot(String token) throws LoginException {
-        super(Objects.requireNonNull(token));
+        super(token, "[Telegram API]");
         try {
             absSender.execute(GetMe.builder().build());
         } catch (TelegramApiException e) {

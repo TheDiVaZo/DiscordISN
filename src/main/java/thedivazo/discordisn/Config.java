@@ -1,12 +1,7 @@
-package thedivazo.discordisn.util;
+package thedivazo.discordisn;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
-import thedivazo.discordisn.Main;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 
 
 public class Config {
@@ -19,7 +14,7 @@ public class Config {
     public static String VKONTAKTE_NEWS_CHANNEL_ID;
     public static String VKONTAKTE_GROUP_TOKEN;
     public static String VKONTAKTE_GROUP_ID;
-    public static boolean VKONTAKTE_ENABLED;
+    public static boolean VK_ENABLED;
     public static String DISCORD_BOT_TOKEN;
     public static String DISCORD_NEWS_CHANNEl_ID;
     private static boolean isPapiLoaded = false;
@@ -51,7 +46,7 @@ public class Config {
         VKONTAKTE_NEWS_CHANNEL_ID = config.getString("vk_api_news_channel_id");
         VKONTAKTE_GROUP_TOKEN = config.getString("vk_api_group_token");
         VKONTAKTE_GROUP_ID = config.getString("vk_api_group_id");
-        VKONTAKTE_ENABLED = config.getBoolean("vk_api_enabled");
+        VK_ENABLED = config.getBoolean("vk_api_enabled");
         DISCORD_BOT_TOKEN = config.getString("discord_api_bot_token");
         DISCORD_NEWS_CHANNEl_ID = config.getString("discord_api_news_channel_id");
         dependPluginChecked();
